@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f2e9">
+  <title>『사건』 — 아니 에르노와의 대화</title>
+  <style>
+    :root{--paper:#f7f2e9;--ink:#262821;--muted:#77786e;--green:#c8df82;--line:#e6dfd2;--white:#fffefa;--accent:#a34d37}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+    .page{min-height:100svh;display:grid;place-items:center;padding:30px 18px;background:radial-gradient(ellipse at 15% 8%,#f0e6d7 0,transparent 40%),var(--paper)}
+    .layout{width:min(100%,1040px);display:grid;grid-template-columns:1fr 370px;gap:56px;align-items:center}
+    .intro{padding:20px 0}.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700}.intro h1{font-family:"Iowan Old Style",Georgia,serif;font-weight:400;font-size:clamp(42px,6vw,72px);line-height:.99;letter-spacing:-.045em;margin:26px 0 20px}.intro h1 span{display:block;font-size:.45em;letter-spacing:.02em;margin-top:15px;color:#77766d}.intro p{max-width:380px;font-size:15px;line-height:1.9;color:#65665e}.rule{width:48px;height:1px;background:var(--accent);margin:28px 0}.book-note{font-size:12px;color:var(--muted);line-height:1.8}.book-note strong{color:var(--ink);font-weight:600}
+    .phone{background:#b8c7b0;border:8px solid #292a27;border-radius:34px;height:min(760px,calc(100svh - 48px));min-height:610px;overflow:hidden;box-shadow:0 28px 70px #322b2026;display:flex;flex-direction:column;position:relative}.status{height:28px;padding:7px 18px 0;display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:#20221f}.chat-head{height:58px;background:#f9f8f4;display:flex;align-items:center;padding:0 15px;gap:11px;border-bottom:1px solid #e6e5df}.back{font-size:23px;color:#353730;margin-right:3px}.avatar{width:35px;height:35px;border-radius:50%;background:#e7d2b7;color:#6a493c;display:grid;place-items:center;font-family:Georgia,serif;font-size:16px}.head-copy{flex:1}.head-copy strong{display:block;font-size:14px}.head-copy small{font-size:10px;color:#88897f}.head-icons{font-size:18px;letter-spacing:8px;color:#55564f;white-space:nowrap}
+    .chat{flex:1;overflow:auto;padding:16px 13px 10px;background-color:#b8c7b0;background-image:radial-gradient(#ffffff16 .8px,transparent .8px);background-size:8px 8px;scroll-behavior:smooth}.date-pill{width:max-content;margin:1px auto 17px;background:#96a68f;color:#fff;font-size:10px;padding:6px 11px;border-radius:14px}.notice{margin:0 auto 18px;max-width:270px;text-align:center;color:#62695d;font-size:10px;line-height:1.6;background:#ffffff82;padding:8px 12px;border-radius:8px}.msg{display:flex;gap:7px;align-items:flex-start;margin:10px 0;animation:rise .25s ease-out}.msg.mine{justify-content:flex-end}.mini-avatar{width:26px;height:26px;flex:none;border-radius:50%;background:#e7d2b7;color:#6a493c;display:grid;place-items:center;font:12px Georgia,serif}.bubble-wrap{max-width:78%}.sender{font-size:10px;color:#55584e;margin:0 0 4px 1px}.bubble{padding:9px 11px;border-radius:3px 12px 12px 12px;background:#fffefa;font-size:12px;line-height:1.65;box-shadow:0 1px 1px #52604710;white-space:pre-line}.mine .bubble{background:var(--green);border-radius:12px 3px 12px 12px}.time{font-size:9px;color:#60685b;align-self:flex-end;margin:0 3px 2px}.typing{font-size:10px;color:#53594e;padding:8px 10px;background:#ffffffb8;border-radius:12px;width:max-content;margin:4px 0 8px 33px}
+    .composer{background:#f9f8f4;padding:11px 12px 14px;border-top:1px solid #e4e2dc}.prompt-label{font-size:10px;color:#86877e;margin:0 0 8px 2px}.choices{display:grid;gap:6px}.choice{border:1px solid #e3e1d8;background:white;color:#3c3d37;text-align:left;border-radius:10px;padding:9px 11px;font:inherit;font-size:11px;line-height:1.4;cursor:pointer;transition:.18s}.choice:hover{border-color:#a9bd70;background:#f6faed;transform:translateY(-1px)}.choice:focus-visible{outline:2px solid #879c4d;outline-offset:2px}.choice:disabled{opacity:.55;cursor:default}.foot{background:#f9f8f4;color:#92938b;text-align:center;font-size:9px;padding:0 10px 9px;line-height:1.5}.restart{border:0;background:none;color:#8b583f;text-decoration:underline;cursor:pointer;font:inherit;font-size:10px;margin-top:5px}
+    @keyframes rise{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:760px){.page{padding:18px 12px 24px}.layout{grid-template-columns:1fr;gap:15px;width:min(100%,430px)}.intro{padding:4px 3px 0}.intro h1{font-size:43px;margin:12px 0}.intro h1 span{display:inline;font:inherit;font-size:.55em;margin-left:8px}.intro p,.rule,.book-note{display:none}.eyebrow{font-size:9px}.phone{height:min(690px,75svh);min-height:540px;border-width:6px;border-radius:28px}.status{height:24px;padding-top:5px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="layout">
+      <section class="intro" aria-labelledby="title">
+        <div class="eyebrow">북큐레이션 · 읽고 묻는 시간</div>
+        <h1 id="title">사건<span>아니 에르노와의 대화</span></h1>
+        <p>한 권의 책에서 시작된 질문을 건네보세요. 세 가지 질문 가운데 하나를 고르면, 『사건』을 읽고 떠올릴 수 있는 답변이 도착합니다.</p>
+        <div class="rule"></div>
+        <div class="book-note"><strong>아니 에르노, 『사건』</strong><br>기억을 기록한다는 것, 말해지지 못한 경험을 글로 옮긴다는 것에 관해.</div>
+      </section>
+      <section class="phone" aria-label="아니 에르노와의 가상 카카오톡 대화">
+        <div class="status"><span>9:41</span><span>●●● ▰</span></div>
+        <header class="chat-head"><span class="back" aria-hidden="true">‹</span><div class="avatar" aria-hidden="true">E</div><div class="head-copy"><strong>아니 에르노</strong><small>『사건』을 읽으며</small></div><div class="head-icons" aria-hidden="true">⌕ ⋮</div></header>
+        <div class="chat" id="chat" aria-live="polite" aria-label="대화 내용">
+          <div class="date-pill">오늘</div>
+          <div class="notice">이 대화는 『사건』의 주제에서 영감을 받아 만든<br>전시용 가상 대화입니다.</div>
+          <div class="msg"><div class="mini-avatar" aria-hidden="true">E</div><div class="bubble-wrap"><div class="sender">아니 에르노</div><div class="bubble">안녕하세요. 어떤 질문이 마음에 남았나요?</div></div><span class="time">오후 2:14</span></div>
+        </div>
+        <div class="composer"><p class="prompt-label">질문을 선택해 대화를 시작해보세요</p><div class="choices" id="choices"></div></div>
+        <div class="foot">작가의 실제 발언이나 실제 대화가 아닌 창작된 답변입니다.<br><button class="restart" id="restart" type="button">대화 처음으로</button></div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const prompts = [
+      {q:"왜 자신의 경험을 책으로 기록하셨나요?", a:"내게 일어난 일을 기록하는 것은 그것을 오직 개인의 수치로만 남겨두지 않는 일이었어요. 기억을 글로 옮기면, 한 사람의 경험이 놓여 있던 시대와 사회의 모습도 함께 드러날 수 있다고 생각했습니다."},
+      {q:"그때 가장 견디기 어려웠던 것은 무엇이었나요?", a:"무엇을 해야 할지 알면서도 도움을 구할 길이 거의 없다는 감각이었어요. 몸의 일만이 아니라, 선택을 둘러싼 침묵과 고립도 함께 견뎌야 했습니다. 그래서 그 시간을 흐릿하게 꾸미지 않고 그대로 바라보려 했어요."},
+      {q:"오늘의 독자에게 어떤 질문을 남기고 싶나요?", a:"누구의 경험이 쉽게 말해지고, 누구의 경험은 아직 침묵 속에 남아 있을까요? 한 사람의 이야기를 읽을 때 그 이야기를 둘러싼 조건까지 함께 바라볼 수 있는지 묻고 싶어요."}
+    ];
+    const chat = document.querySelector('#chat');
+    const choices = document.querySelector('#choices');
+    const restart = document.querySelector('#restart');
+    let busy = false;
+    const answered = new Set();
+    const timeNow = () => { const d=new Date(); return `${d.getHours()<12?'오전':'오후'} ${String(d.getHours()%12||12).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; };
+    function bubble(text, mine=false){
+      const row=document.createElement('div'); row.className=`msg${mine?' mine':''}`;
+      if(!mine){const av=document.createElement('div');av.className='mini-avatar';av.textContent='E';av.setAttribute('aria-hidden','true');row.append(av)}
+      const wrap=document.createElement('div');wrap.className='bubble-wrap';
+      if(!mine){const sender=document.createElement('div');sender.className='sender';sender.textContent='아니 에르노';wrap.append(sender)}
+      const body=document.createElement('div');body.className='bubble';body.textContent=text;wrap.append(body);
+      const tm=document.createElement('span');tm.className='time';tm.textContent=timeNow();row.append(wrap,tm);chat.append(row);chat.scrollTop=chat.scrollHeight;
+    }
+    function libraryBubble(){const row=document.createElement('div');row.className='msg';const av=document.createElement('div');av.className='mini-avatar';av.textContent='📚';row.append(av);const wrap=document.createElement('div');wrap.className='bubble-wrap';const sender=document.createElement('div');sender.className='sender';sender.textContent='도서관 안내';const body=document.createElement('div');body.className='bubble';body.textContent='아니 에르노의 『사건』은 충남대학교 중앙도서관 5층 제3자료실에 있습니다.\n청구기호: 843.914 E71e윤';wrap.append(sender,body);const tm=document.createElement('span');tm.className='time';tm.textContent=timeNow();row.append(wrap,tm);chat.append(row);chat.scrollTop=chat.scrollHeight}
+    function renderChoices(){choices.replaceChildren(...prompts.map((item,i)=>{const b=document.createElement('button');b.className='choice';b.type='button';b.textContent=`${String(i+1).padStart(2,'0')}  ${item.q}`;b.addEventListener('click',()=>ask(i));return b}))}
+    function ask(i){if(busy||answered.has(i))return;busy=true;bubble(prompts[i].q,true);const typing=document.createElement('div');typing.className='typing';typing.textContent='답변을 작성하고 있어요…';chat.append(typing);chat.scrollTop=chat.scrollHeight;setTimeout(()=>{typing.remove();bubble(prompts[i].a);answered.add(i);choices.children[i].disabled=true;busy=false;if(answered.size===prompts.length){[...choices.children].forEach(b=>b.disabled=true);const finalTyping=document.createElement('div');finalTyping.className='typing';finalTyping.textContent='책 위치를 확인하고 있어요…';chat.append(finalTyping);chat.scrollTop=chat.scrollHeight;setTimeout(()=>{finalTyping.remove();libraryBubble()},650)}},650)}
+    function reset(){answered.clear();[...choices.children].forEach(b=>b.disabled=false);chat.innerHTML='<div class="date-pill">오늘</div><div class="notice">이 대화는 『사건』의 주제에서 영감을 받아 만든<br>전시용 가상 대화입니다.</div>';bubble('안녕하세요. 어떤 질문이 마음에 남았나요?');}
+    renderChoices();restart.addEventListener('click',reset);
+  </script>
+</body>
+</html>
